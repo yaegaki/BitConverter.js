@@ -5,8 +5,8 @@ GetBinary.jsは指定したurlにあるものをUint8Array形式でとってく�
 
 基本的な使い方はc#のBitConverterと同じだが,  
 To系の関数は一番めのvalueはUint8Array型.
-また,GetBytes関数でnumberは標準でUint32ArrayもしくはFloat64Arrayに変換されたの後,4byteか8byteのUint8Arrayに変換される.  
-1byteの数値が作りたい場合はGet1Bytesを用いる.
+また,GetBytes関数でnumberはUint32ArrayもしくはFloat64Arrayに変換されたの後,4byteか8byteのUint8Arrayに変換される.
+numberを1byteに変換する場合はGet1Bytesを用いる.
 BitConverterにはBCという別名がある.
 
 *使用例*  
@@ -20,4 +20,4 @@ BitConverterにはBCという別名がある.
     BC.ToInt32(c) // = -1
     BC.ToUInt32(c) // = 4294967295
     BC.ToFloat64(d, 4) // = 30.5  
-    BC.ToString(f, 1*2, 3*2) // = "いうえ"
+    BC.ToString(f, 1*2, 3*2) // = "いうえ"  
