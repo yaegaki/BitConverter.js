@@ -113,35 +113,35 @@
     _BitConverter.ToInt16 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(2);
-        for(var i = 0;i < 2;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 2;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Int16Array(temp.buffer, 0, 1))[0];
     }
 
     _BitConverter.ToInt32 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(4);
-        for(var i = 0;i < 4;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 4;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Int32Array(temp.buffer, 0, 1))[0];
     }
 
     _BitConverter.ToUInt16 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(2);
-        for(var i = 0;i < 2;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 2;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Uint16Array(temp.buffer, 0, 1))[0];
     }
 
     _BitConverter.ToUInt32 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(4);
-        for(var i = 0;i < 4;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 4;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Uint32Array(temp.buffer, 0, 1))[0];
     }
 
     _BitConverter.ToChar = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(2);
-        for(var i = 0;i < 2;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 2;i++) temp[i] = (value[startIndex+i] || 0);
         return String.fromCharCode((new Uint16Array(temp.buffer, 0, 1))[0]);
     }
 
@@ -156,22 +156,23 @@
     _BitConverter.ToString = function (value, startIndex, length){
         startIndex = startIndex || 0;
         length = length || value.length;
+        if(length+startIndex > value.length) length -= startIndex;
         var temp = new Uint8Array(length);
-        for(var i = 0;i < length;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < length;i++) temp[i] = (value[startIndex+i] || 0);
         return String.fromCharCode.apply(null, new Uint16Array(temp.buffer, 0, length / 2));
     }
 
     _BitConverter.ToFloat32 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(4);
-        for(var i = 0;i < 4;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 4;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Float32Array(temp.buffer, 0, 1))[0];
     }
 
     _BitConverter.ToFloat64 = function (value, startIndex){
         startIndex = startIndex || 0;
         var temp = new Uint8Array(8);
-        for(var i = 0;i < 8;i++) temp[i] = value[startIndex+i];
+        for(var i = 0;i < 8;i++) temp[i] = (value[startIndex+i] || 0);
         return (new Float64Array(temp.buffer, 0, 1))[0];
     }
 
