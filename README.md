@@ -15,9 +15,9 @@ BitConverterにはBCという別名がある.
     c = BC.GetBytes(-1) // = [255, 255, 255, 255]  
     d = BC.GetBytes([-1 ,30.5, [true, false]]) // = [255, 255, 255, 255, 0, 0, 0, 0, 0, 128, 62, 64, 1, 0]  
     f = BC.GetBytes("あいうえお") // = [66, 48, 68, 48, 70, 48, 72, 48, 74, 48]     
-    BC.ToInt32(a) // = 123456789  
+    BC.ToInt32(a) // = 123456789
     BC.ToInt8(b) // = 21  
-    BC.ToInt32(c) // = 23  
-    BC.ToUInt32(c) // = -1  
+    BC.ToInt32(c) // = -1
+    BC.ToUInt32(c) // = 4294967295
     BC.ToFloat64(d, 4) // = 30.5  
     BC.ToString(f, 1*2, 3*2) // = "いうえ"
