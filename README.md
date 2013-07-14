@@ -20,5 +20,5 @@ BitConverterにはBCという別名がある.
     BC.ToInt32(c) // = -1  
     BC.ToUInt32(c) // = 4294967295  
     BC.ToFloat64(d, 4) // = 30.5  
-    BC.ToString(f, 1*2, 3*2) // = "いうえ"  
+    BC.ToString(f, 2*1, 2*3) // = "いうえ"  
     

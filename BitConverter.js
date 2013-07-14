@@ -100,8 +100,6 @@
 
     _BitConverter.ToInt8 = function (value, startIndex){
         startIndex = startIndex || 0;
-        var result = value[startIndex] & 0xff;
-        if(result & 0x80) result = -((result ^ 0xff) + 1)
         return (value[startIndex] & 0x80)?  -((value[startIndex] ^ 0xff) + 1): value[startIndex];
     }
 
