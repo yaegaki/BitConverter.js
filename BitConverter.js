@@ -148,10 +148,17 @@
         return String.fromCharCode(value[startIndex]);
     }
 
-    //length is Number of Bytes
-    //length must be even number
-    //because javascript char-code is utf-16
-    _BitConverter.ToString = function (value, startIndex, length){
+	_BitConverter.ToAsciiString = function(value, startIndex, length){
+        startIndex = startIndex || 0;
+        length = length || value.length;
+        if(length+startIndex > value.length) length -= startIndex;
+        var temp = new Uint8Array(length);
+        var result = "";
+		for(var i = 0;i < length;i++) result += String.fromCharCode(value[startIndex+i] || 0);
+        return result;
+	}
+
+	_BitConverter.ToUTF16String = function (value, startIndex, length){
         startIndex = startIndex || 0;
         length = length || value.length;
         if(length+startIndex > value.length) length -= startIndex;
@@ -159,6 +166,7 @@
         for(var i = 0;i < length;i++) temp[i] = (value[startIndex+i] || 0);
         return String.fromCharCode.apply(null, new Uint16Array(temp.buffer, 0, length / 2));
     }
+
 
     _BitConverter.ToFloat32 = function (value, startIndex){
         startIndex = startIndex || 0;
